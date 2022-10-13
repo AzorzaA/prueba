@@ -2,6 +2,7 @@ package restaurante;
 
 import java.util.List;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,6 +22,7 @@ public class ListarPlatos {
         this.Estadopedido = Estadopedido;
         this.plato = plato;
         this.fecha = fecha;
+
     }
 
     public int getIdpedido() {
@@ -71,11 +73,12 @@ public class ListarPlatos {
             ConexionSQL conector = new ConexionSQL();
             Statement st = conector.Conectar();
             //cn = ConexionSQL.Statement st = cn.createStatement();
-            String consult = "Select p.IdPedido, p.numMesa, e.estado_des, pl.nombrePlato"
+            String consult = "Select p.IdPedido, p.numMesa, e.estado_des, pl.nombrePlato, p.horaPedido"
                     + " from Pedido p "
                     + "inner join EstadoPedido e on p.IdEstado = e.IdEstado "
-                    + "inner join Plato pl on pl.IdPlato = IdPlato";
-                    //+ "where IdEstado = 2";
+                    + "inner join Plato pl on pl.IdPlato = IdPlato "
+                    //  +" where p.IdEstado ='2'";
+                    + " where p.IdEstado ='2'";
             ResultSet rs = st.executeQuery(consult);
 
             while (rs.next()) {
@@ -83,13 +86,15 @@ public class ListarPlatos {
                 int nummesa = rs.getInt("numMesa");
                 String Estadopedido = rs.getString("estado_des");
                 String plato = rs.getString("nombrePlato");
+                String fecha = rs.getString("horaPedido");
                 Lista.add(new ListarPlatos(idpedido, nummesa, Estadopedido, plato, fecha));
             }
-
+            
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
         return Lista;
+
     }
 
 }
