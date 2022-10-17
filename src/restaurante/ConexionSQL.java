@@ -11,7 +11,7 @@ public class ConexionSQL {
 
     /*public static Connection geConnetion(){
         String conexionURL = "jdbc:sqlserver://localhost:1433;"
-                +"database = Restaurante;"
+                +"database = RestPiuranita;"
                 +"user =Sa;"
                 +"password=Marciano2020@;"
                 +"loginTimmeOut =30";    
@@ -26,7 +26,7 @@ public class ConexionSQL {
      */
     public String usuario = "sa";
     public String pass = "Marciano2020@";
-    public String url = "jdbc:sqlserver://localhost:1433;databaseName=Restaurante;";
+    public String url = "jdbc:sqlserver://localhost:1433;databaseName=RestPiuranita;";
     //jdbc:sqlserver://localhost:1433;databaseName=Restaurante [sa on dbo]
     public Connection cn = null;
     public Statement st = null;

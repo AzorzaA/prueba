@@ -3,11 +3,12 @@ package restaurante.vista;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import restaurante.ListarPlatos;
+import restaurante.MostrarPedidos;
 
 public class cocina extends javax.swing.JFrame {
 
     public cocina() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -21,36 +22,51 @@ public class cocina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPlatos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        salirCocina = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusCycleRoot(false);
+        setFocusable(false);
+        setFocusableWindowState(false);
+        setUndecorated(true);
 
-        tablaPlatos.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(java.awt.SystemColor.activeCaption);
+        jPanel1.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(830, 450));
+
+        tablaPlatos.setBackground(new java.awt.Color(204, 255, 204));
+        tablaPlatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tablaPlatos.setForeground(new java.awt.Color(51, 51, 255));
         tablaPlatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "IdPedido", "Mesa", "Plato", "Estado", "HoraPedido"
+                "IdPedido", "Mesa", "Plato", "Precio", "Estado", "HoraPedido"
             }
         ));
         jScrollPane2.setViewportView(tablaPlatos);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Pedidos:");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Preparar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        if (tablaPlatos.getColumnModel().getColumnCount() > 0) {
+            tablaPlatos.getColumnModel().getColumn(0).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tablaPlatos.getColumnModel().getColumn(1).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(1).setPreferredWidth(20);
+            tablaPlatos.getColumnModel().getColumn(2).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(2).setPreferredWidth(120);
+            tablaPlatos.getColumnModel().getColumn(3).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(3).setPreferredWidth(60);
+            tablaPlatos.getColumnModel().getColumn(4).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(4).setPreferredWidth(70);
+            tablaPlatos.getColumnModel().getColumn(5).setResizable(false);
+            tablaPlatos.getColumnModel().getColumn(5).setPreferredWidth(140);
+        }
 
         btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnActualizar.setText("Actualizar");
@@ -60,37 +76,81 @@ public class cocina extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("Preparar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Pedidos:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+
+        salirCocina.setForeground(new java.awt.Color(255, 0, 51));
+        salirCocina.setText("Cerrar");
+        salirCocina.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        salirCocina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirCocinaMouseClicked(evt);
+            }
+        });
+        salirCocina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirCocinaActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(salirCocina);
+
+        setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,13 +162,13 @@ public class cocina extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
-            ListarPlatos cons = new ListarPlatos();
-            List<ListarPlatos> lista = cons.listarPedido();
+            MostrarPedidos cons = new MostrarPedidos();
+            List<MostrarPedidos> lista = cons.listarPedido();
             DefaultTableModel tabla;
             tabla = (DefaultTableModel) tablaPlatos.getModel();
             tabla.setRowCount(0);
-            for (ListarPlatos dto : lista) {
-                Object[] rowData = {dto.getIdpedido(), dto.getNummesa(), dto.getPlato(), dto.getEstadopedido()};
+            for (MostrarPedidos dto : lista) {
+                Object[] rowData = {dto.getIdpedido(), dto.getMesa(), dto.getPlato(), dto.getPrecio(), dto.getEstadopedido(), dto.getFecha()};
                 tabla.addRow(rowData);
             }
         } catch (Exception e) {
@@ -116,6 +176,17 @@ public class cocina extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void salirCocinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirCocinaMouseClicked
+        if (JOptionPane.showConfirmDialog(rootPane, "¿Quiere Cerrar Modulo Cocina?",
+                "Mensaje de Sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            dispose();
+        }
+    }//GEN-LAST:event_salirCocinaMouseClicked
+
+    private void salirCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirCocinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salirCocinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +227,10 @@ public class cocina extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JMenu salirCocina;
     private javax.swing.JTable tablaPlatos;
     // End of variables declaration//GEN-END:variables
 }

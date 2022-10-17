@@ -5,7 +5,7 @@
  */
 package restaurante;
 
-import restaurante.vista.login;
+import restaurante.vista.Login;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       login lg = new login();
+       Login lg = new Login();
         lg.setVisible(true);
     }
     

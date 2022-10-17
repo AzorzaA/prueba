@@ -20,18 +20,23 @@ public class pruebalistar {
         try {
             ConexionSQL conector = new ConexionSQL();
             Statement st = conector.Conectar();
-            String consult = "Select p.IdPedido, p.numMesa, e.estado_des, pl.nombrePlato"
-                    + " from Pedido p "
-                    + "inner join EstadoPedido e on p.IdEstado = e.IdEstado "
-                    + "inner join Plato pl on pl.IdPlato = IdPlato";
+            String consult = "Select dt.idPedido, mm.desc_mesa, pl.desc_plato, pl.precio, pp.fechaInicio, ep.des_estado "
+                    + " from Detalle_Pedido dt "
+                    + "inner join Platos pl on pl.idPlato=dt.idPlato "
+                    + "inner join pedido pp on pp.idPedido = dt.idPedido "
+                    + "inner join mesa mm on mm.idmesa =pp.idmesa "
+                    + "inner join EstadoPedido ep on ep.idEstado =pp.idEstado "
+                    + " where ep.idEstado = '2'";
             //  + "order by p.IdPedido ";
             ResultSet rs = st.executeQuery(consult);
             while (rs.next()) {
                 int idpedido = rs.getInt("IdPedido");
-                int nummesa = rs.getInt("numMesa");
-                String Estadopedido = rs.getString("estado_des");
-                String plato = rs.getString("nombrePlato");
-                System.out.println(idpedido + "-" + nummesa + "\t-" + Estadopedido + "\t-" + plato);
+                String nummesa = rs.getString("desc_mesa");
+                String Estadopedido = rs.getString("des_estado");
+                String plato = rs.getString("desc_plato");
+                Double prec = rs.getDouble("precio");
+                String fech = rs.getString("fechaInicio");
+                System.out.println(idpedido + "-" + nummesa  + "\t-" + plato+ "\t-"+prec + "\t\t-" + Estadopedido+ "\t"+fech);
 
             }
         } catch (Exception e) {

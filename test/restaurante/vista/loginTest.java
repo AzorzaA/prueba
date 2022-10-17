@@ -38,13 +38,13 @@ public class loginTest {
     }
 
     /**
-     * Test of main method, of class login.
+     * Test of main method, of class Login.
      */
     @Test
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-        login.main(args);
+        Login.main(args);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
